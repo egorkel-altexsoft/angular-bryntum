@@ -57,6 +57,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/@bryntum/schedulerpro/schedulerpro.classic-light.min.css",
               "src/styles.scss"
             ],
             "scripts": []
