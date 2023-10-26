@@ -38,15 +38,19 @@ export class AppComponent implements OnInit, AfterViewInit {
           field: 'name',
           minWidth: 280
         }
-      ]
+      ],
+      resourceStore: {
+        modelClass: CustomResourceModel
+      },
+      eventStore: {
+        modelClass: CustomEventModel
+      }
     };
   }
 
   #initData(): void {
-    const calendarResources = resources.map(r => new CustomResourceModel(r));
-    const calendarEvents = events.map(e => new CustomEventModel(e));
     this.scheduler.instance.resourceStore
-      .addAsync(calendarResources)
-      .then(() => this.scheduler.instance.eventStore.addAsync(calendarEvents));
+      .addAsync(resources)
+      .then(() => this.scheduler.instance.eventStore.addAsync(events));
   }
 }
