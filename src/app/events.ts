@@ -5,7 +5,8 @@ export const events = [
     endDate: new Date(2023, 9, 25, 12),
     name: 'Multi assigned',
     type: 'multi',
-    resourceIds: ['r1', 'r2', 'r5'] // Doesn't work
+    resourceIds: ['r1', 'r2', 'r5'],
+    recurrenceRule: 'FREQ=MONTHLY;INTERVAL=1;BYMONTHDAY=4;COUNT=5;'
   },
   {
     id: 'e2',
@@ -13,8 +14,7 @@ export const events = [
     endDate: new Date(2023, 9, 25, 10),
     name: 'Single assigned',
     type: 'single',
-    resourceId: 'r3' // Works
-    // resourceIds: ['r3'] // Doesn't work
+    resourceId: 'r3'
   },
   {
     id: 'e3',
@@ -22,7 +22,6 @@ export const events = [
     endDate: new Date(2023, 9, 25, 20),
     name: 'Single assigned',
     type: 'single',
-    resourceId: 'r4' // Works
-    // resourceIds: ['r4'] // Doesn't work
+    resourceId: 'r4'
   }
 ];

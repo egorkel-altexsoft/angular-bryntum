@@ -24,13 +24,15 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public ngAfterViewInit(): void {
     this.#initData();
+
+    setTimeout(() => this.#refresh(), 5000);
   }
 
   #initConfig(): void {
     this.schedulerProConfig = {
-      startDate: new Date(2023, 9, 25, 0),
-      endDate: new Date(2023, 9, 26, 0),
-      viewPreset: 'hourAndDay',
+      startDate: new Date(2023, 9, 22, 0),
+      endDate: new Date(2023, 11, 4, 0),
+      viewPreset: 'weekAndDayLetter',
       columns: [
         {
           type: 'resourceInfo',
@@ -44,7 +46,8 @@ export class AppComponent implements OnInit, AfterViewInit {
       },
       eventStore: {
         modelClass: CustomEventModel
-      }
+      },
+      enableRecurringEvents: true
     };
   }
 
@@ -52,5 +55,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.scheduler.instance.resourceStore
       .addAsync(resources)
       .then(() => this.scheduler.instance.eventStore.addAsync(events));
+  }
+
+  #refresh(): void {
+    this.scheduler.instance.eventStore.removeAll();
+    this.scheduler.instance.eventStore.addAsync(events).then(() => console.log('refreshed'));
   }
 }
